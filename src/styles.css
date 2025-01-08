@@ -218,7 +218,7 @@ button:hover {
 }
 
 button:hover .icon {
-  transform: transform(4px);
+  transform: translateX(4px);
 }
 
 #new-ticket {
