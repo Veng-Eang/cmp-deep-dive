@@ -1,10 +1,8 @@
 <form>
-  <p>
-    <label for="title">Title</label>
+  <app-control label="Title">
     <input type="text" id="title" name="title" required />
-  </p>
-  <p>
-    <label for="request">Request</label>
+  </app-control>
+  <app-control label="Request">
     <textarea
       rows="3"
       type="text"
@@ -12,7 +10,7 @@
       name="request"
       required
     ></textarea>
-  </p>
+  </app-control>
   <p>
     <button appButton>
       Submit
