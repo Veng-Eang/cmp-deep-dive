@@ -1,7 +1,8 @@
-import { AfterViewInit, Component, ElementRef, OnInit, ViewChild, viewChild } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, EventEmitter, input, OnInit, output, ViewChild, viewChild } from '@angular/core';
 import { ButtonComponent } from '../../../share/button/button.component';
 import { ControlComponent } from "../../../share/control/control.component";
 import { FormsModule } from '@angular/forms';
+import { tick } from '@angular/core/testing';
 
 @Component({
   selector: 'app-new-ticket',
@@ -11,11 +12,13 @@ import { FormsModule } from '@angular/forms';
 })
 export class NewTicketComponent implements OnInit,AfterViewInit {
   ngOnInit(): void {
-    throw new Error('Method not implemented.');
+    console.log("ON INIT")
   }
   ngAfterViewInit(): void {
-    throw new Error('Method not implemented.');
+    console.log("AFTER VIEW INIT")
   }
+
+  add = output<{title:string,text:string}>();
 
   // @ViewChild('form') form?: ElementRef<HTMLFormElement>;
   private form = viewChild.required<ElementRef<HTMLFormElement>>('form')
@@ -24,7 +27,12 @@ export class NewTicketComponent implements OnInit,AfterViewInit {
   onSubmit(titleInput:string,ticketTitle:string){
     console.log("SUBMIT!!!");
     console.log(titleInput);
-    console.log(ticketTitle)
+    console.log(ticketTitle);
+    this.add.emit({
+      title : titleInput,
+      text : ticketTitle
+    }
+    )
     // this.form?.nativeElement.reset();
     this.form().nativeElement.reset();
   }
