@@ -19,6 +19,6 @@ private el = inject(ElementRef);
 // @HostListener('click')
 onClick(){
   console.log("Clicked!");
-  console.log(this.el);
+  console.log(this.el); 
 }
 }
